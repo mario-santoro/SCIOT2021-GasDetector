@@ -46,10 +46,10 @@ $ npm install mqtt
 ```
 
 ## Usage
- 
+ coming soon
 
 ## Future developments
- 
+ coming soon
 
 ## Author
 <b>Mario Santoro</b> <br><br>
