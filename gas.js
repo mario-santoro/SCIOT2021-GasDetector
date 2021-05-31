@@ -4,7 +4,7 @@ var mysql = require('mysql');
 var mqtt = require('mqtt'), url = require('url');
 
    
-  var mqtt_url = url.parse(process.env.CLOUDAMQP_MQTT_URL || 'mqtt://guest:guest@192.168.1.14:1883');
+  var mqtt_url = url.parse(process.env.CLOUDAMQP_MQTT_URL || 'mqtt://guest:guest@<ip_address_ubuntu>:1883');
     var auth = (mqtt_url.auth || ':').split(':');
     var url = "mqtt://" + mqtt_url.host;
     var options = {
@@ -58,7 +58,7 @@ function getDateTime() {
 function saveLog(value){
     
     var connection = mysql.createConnection({
-        host: '192.168.1.13',
+        host: '<ip_address>',
         user: 'root',
         password: '',
         database: 'gas-detector'
