@@ -11,7 +11,7 @@ def on_message(client, userdata, msg):  # The callback for when a PUBLISH messag
      
 
 
-client = mqtt.Client("mqtt://guest:guest@192.168.1.14:1883")  # Create instance of client with client ID “digi_mqtt_test”
+client = mqtt.Client("mqtt://guest:guest@<ip_address_ubuntu>:1883")  # Create instance of client with client ID “digi_mqtt_test”
 client.on_connect = on_connect  # Define callback function for successful connection
 client.on_message = on_message  # Define callback function for receipt of a message
 client.connect('192.168.1.14', 1883) # client.connect("m2m.eclipse.org", 1883, 60)  # Connect to (broker, port, keepalive-time)
