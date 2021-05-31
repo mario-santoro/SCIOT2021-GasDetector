@@ -36,11 +36,14 @@ $ sudo apt-get install \apt-transport-https \ca-certificates \curl \software-pro
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 $ sudo apt-key fingerprint 0EBFCD88
 $ sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \     $(lsb_release -cs) \ stable"
+Ubuntu 18.4
+$ sudo apt install docker.io
 $ sudo apt-get update
 $ sudo apt-get install docker-ce
 ```
 In local install a package for telegram bot
 ```console
+$ sudo apt install npm
 $ npm i node-telegram-bot-api
 $ npm install mqtt
 ```
