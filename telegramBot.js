@@ -8,7 +8,7 @@ const bot = new TelegramBot(token, {polling: true});
 var mqtt = require('mqtt');
 
 
-  var client = mqtt.connect('mqtt://guest:guest@192.168.1.14:1883');
+  var client = mqtt.connect('mqtt://guest:guest@<ip_address_ubuntu>:1883');
 
 client.on('connect', () => {
   client.subscribe('segnalazione')
@@ -42,7 +42,7 @@ bot.on('message', (msg) => {
 
 
 function sendResponse(msg){
-    var cli = mqtt.connect('mqtt://guest:guest@192.168.1.14:1883');
+    var cli = mqtt.connect('mqtt://guest:guest@<ip_address_ubuntu>:1883');
     cli.on('connect', function() {
         cli.publish('iot/segnalazione',msg, function() {
             cli.end();       
