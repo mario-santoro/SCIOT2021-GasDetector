@@ -46,10 +46,36 @@ $ npm install mqtt
 ```
 
 ## Usage
- coming soon
+In "telegramBot.js" change the token and chat-id with your token and chat-id. <br>
+Launch RabbitMQ with command:
+```console
+$ sudo docker run -p 9000:15672 -p 1883:1883 -p 5672:5672  cyrilix/rabbitmq-mqtt
+```
+Launch Nuclio with command:
+```console
+$ sudo docker run -p 8070:8070 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp nuclio/dashboard:stable-amd64
+```
+In Nuclio after create a project and a new Nodejs function in the section configuration, in Build commands, you must insert follow command:
+```console
+npm install --global moment
+npm install amqplib mqtt
+npm install mysql
+npm i node-telegram-bot-api
+```
+While in Nuclio's Triggers in the section class you must insert "MQTT", in URL insert "guest:guest@<ip_address_ubuntu>:1883", in topic "<your_topic_name>", and in 
+QoS "0".  <br>
+In Nuclio's code insert the code in "gas.js" by replacing where needed with your <ip_address_ubuntu> and your topic.<br>
+Launch Telegram bot with command:
+```console
+$ node telegramBot.js
+```
+Launch the script "iotSensors.py" and "gasDetector.py" on Visual Studio Code for work the program and chat with the bot for choose the action.  
 
 ## Future developments
- coming soon
+As future developments, the chat id and information of each user can be stored in the database when the chatbot is first started.<br>
+This information would be associated with the user's sensors (also stored in the DB with their identifier) in order to understand to which user to send the perceived data.<br>
+Another future development is the possibility of asking the chatbot to show it the last N logs stored in the database, in order to monitor the situation. <br>
+In the end ask the chatbot to add new IoT devices to take action.
 
 ## Author
 <b>Mario Santoro</b> <br><br>
