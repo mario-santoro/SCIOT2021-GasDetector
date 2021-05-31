@@ -1,5 +1,5 @@
 import paho.mqtt.client as paho
-broker="192.168.1.14"
+broker="<ip_address_ubuntu>"
 port=1883
 def on_publish(client,userdata,result):             #create function for callback
     print("data published \n")
