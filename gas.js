@@ -2,12 +2,7 @@ var FUNCTION_NAME = "mqttconsume";
 var amqp = require('amqplib');
 var mysql = require('mysql');
 var mqtt = require('mqtt'), url = require('url');
-const TelegramBot = require('node-telegram-bot-api');
 
-// replace the value below with the Telegram token you receive from @BotFather
-const token = '1716579327:AAFtgO22DRD4QGMH2dqjoFRRsdaW1AfNYg0';
-// Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token);
    
   var mqtt_url = url.parse(process.env.CLOUDAMQP_MQTT_URL || 'mqtt://guest:guest@192.168.1.14:1883');
     var auth = (mqtt_url.auth || ':').split(':');
@@ -27,8 +22,6 @@ function bin2string(array){
     return result;
 }
 function sendResponse(msg){
-   
-   
     var client = mqtt.connect(url, options);
     client.on('connect', function() {
         client.publish('segnalazione',msg, function() {
@@ -90,12 +83,8 @@ exports.handler = function(context, event) {
   
   
     if(gas>=60){
-        sendResponse("Attenzione: rilevata percentuale di gas più alta del normale!");
-        
-        bot.sendMessage(769171660, "la percentuale di gas rilevata nell'ambiente di casa è: " +gas+"%")
-    }else{
-        sendResponse("Nessun problema");
-
+        sendResponse("the percentage of gas detected in the home environment is: " +gas+"%");
+  
     }
       saveLog(gas);
     context.callback("feedback "+gas);
